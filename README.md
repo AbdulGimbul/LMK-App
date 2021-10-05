@@ -1,0 +1,3 @@
+# LMK-App
+
+Proyek Skripsi
