@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyLMK-App</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_myngaji">Ngaji Saya</string>
+    <string name="title_dashboard">Beranda</string>
+    <string name="title_myprofile">Profil Saya</string>
+
+    <string name="whats_lmk">Apa itu LMK?</string>
+    <string name="list_tutor">Daftar Guru LMK</string>
+    <string name="register_student">Daftar Sebagai Murid Baru</string>
+    <string name="about_us">Tentang Kami</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+</resources>

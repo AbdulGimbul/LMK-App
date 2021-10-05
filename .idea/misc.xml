@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_detail_guru.xml" value="0.18614130434782608" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_guru.xml" value="0.17481884057971014" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_login.xml" value="0.135258358662614" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_register.xml" value="0.18" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_home.xml" value="0.18070652173913043" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_ngaji.xml" value="0.18070652173913043" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_profile.xml" value="0.18070652173913043" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_guru.xml" value="0.1" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.209375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
