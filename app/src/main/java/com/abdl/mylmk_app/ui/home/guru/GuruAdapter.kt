@@ -1,5 +1,6 @@
 package com.abdl.mylmk_app.ui.home.guru
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,10 +14,12 @@ import com.bumptech.glide.request.RequestOptions
 class GuruAdapter : RecyclerView.Adapter<GuruAdapter.GuruViewHolder>() {
     var guru = ArrayList<GuruEntity>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setGuruList(guru: List<GuruEntity>) {
         if (guru == null) return
         this.guru.clear()
         this.guru.addAll(guru)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuruViewHolder {

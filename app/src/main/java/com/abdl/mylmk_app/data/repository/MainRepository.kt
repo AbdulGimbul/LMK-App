@@ -2,10 +2,12 @@ package com.abdl.mylmk_app.data.repository
 
 import com.abdl.mylmk_app.data.source.local.LocalDataSource
 import com.abdl.mylmk_app.data.source.local.entity.GuruEntity
+import com.abdl.mylmk_app.data.source.local.entity.ProgramEntity
 import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
 
 class MainRepository private constructor(private val remoteDataSource: RemoteDataSource) :
     LocalDataSource {
+
     companion object {
         @Volatile
         private var instance: MainRepository? = null
@@ -55,5 +57,22 @@ class MainRepository private constructor(private val remoteDataSource: RemoteDat
             }
         }
         return guru
+    }
+
+    override fun getAllProgram(): List<ProgramEntity> {
+        remoteDataSource.loadProgram()
+        val programResponse = remoteDataSource.programList
+        val programList = ArrayList<ProgramEntity>()
+        for (response in programResponse) {
+            val program = ProgramEntity(
+                response.idInfo,
+                response.judul,
+                response.deskripsi,
+                response.gambar,
+                response.type
+            )
+            programList.add(program)
+        }
+        return programList
     }
 }

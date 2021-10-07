@@ -33,7 +33,7 @@ class DetailGuruActivity : AppCompatActivity() {
             val guruId = extras.getString(EXTRA_GURU)
             if (guruId != null) {
                 viewModel.setSelectedGuru(guruId)
-                populateGuru(viewModel.getGuru() as GuruEntity)
+                populateGuru(viewModel.getGuru())
             }
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

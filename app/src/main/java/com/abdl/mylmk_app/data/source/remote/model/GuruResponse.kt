@@ -3,8 +3,12 @@ package com.abdl.mylmk_app.data.source.remote.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+data class GuruResponse(
+    var guru: List<GuruItem>
+)
+
 @Parcelize
-data class Guru(
+data class GuruItem(
     var id_guru: String,
     var username: String,
     var nama: String,
@@ -14,7 +18,3 @@ data class Guru(
     var alamat: String,
     var avatar: String,
 ) : Parcelable
-
-data class GuruResponse(
-    var guru: List<Guru>
-)

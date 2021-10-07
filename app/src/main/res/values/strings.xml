@@ -14,10 +14,12 @@
     <string name="title_dashboard">Beranda</string>
     <string name="title_myprofile">Profil Saya</string>
 
-    <string name="whats_lmk">Apa itu LMK?</string>
+    <string name="program">Program LMK</string>
     <string name="list_tutor">Daftar Guru LMK</string>
     <string name="register_student">Daftar Sebagai Murid Baru</string>
     <string name="about_us">Tentang Kami</string>
     <string name="nama">Nama</string>
     <string name="alamat">Alamat</string>
+    <string name="logout">Logout</string>
+    <string name="program_description">Teks Deskripsi</string>
 </resources>

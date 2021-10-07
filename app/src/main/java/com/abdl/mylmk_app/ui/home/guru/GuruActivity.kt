@@ -11,7 +11,6 @@ import com.abdl.mylmk_app.databinding.ActivityGuruBinding
 import com.abdl.mylmk_app.viewmodel.ViewModelFactory
 
 class GuruActivity : AppCompatActivity() {
-    private val TAG = "GuruActivity"
     private lateinit var activityGuruBinding: ActivityGuruBinding
     private lateinit var viewModel: GuruViewModel
 
@@ -25,23 +24,17 @@ class GuruActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[GuruViewModel::class.java]
 
         val guru = viewModel.getAllGuru()
+
         val guruAdapter = GuruAdapter()
         guruAdapter.setGuruList(guru)
 
         with(activityGuruBinding.rvGuru) {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(this@GuruActivity)
             setHasFixedSize(true)
             adapter = guruAdapter
         }
 
-//        viewModel.guruList.observe(this, Observer {
-//            Log.d(TAG, "onCreate: $it")
-//            adapter.setGuruList(it)
-//        })
-//
-//        viewModel.errorMessage.observe(this, Observer {
-//
-//        })
-
+        supportActionBar?.elevation = 0f
+        supportActionBar?.title = "Daftar Guru LMK"
     }
 }
