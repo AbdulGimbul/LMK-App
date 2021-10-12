@@ -5,7 +5,7 @@ import com.abdl.mylmk_app.data.source.local.entity.GuruEntity
 import com.abdl.mylmk_app.data.source.local.entity.ProgramEntity
 import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
 
-class MainRepository private constructor(private val remoteDataSource: RemoteDataSource) :
+class MainRepository constructor(private val remoteDataSource: RemoteDataSource) :
     LocalDataSource {
 
     companion object {

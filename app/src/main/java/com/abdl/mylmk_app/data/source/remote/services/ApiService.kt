@@ -1,10 +1,14 @@
 package com.abdl.mylmk_app.data.source.remote.services
 
+import com.abdl.mylmk_app.data.source.remote.model.AuthResponse
 import com.abdl.mylmk_app.data.source.remote.model.GuruResponse
 import com.abdl.mylmk_app.data.source.remote.model.ProgramResponse
-import com.abdl.mylmk_app.login.data.ResultLogin
 import com.abdl.mylmk_app.register.data.ResultRegister
+import okhttp3.OkHttpClient
 import retrofit2.Call
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -13,10 +17,10 @@ import retrofit2.http.POST
 interface ApiService {
     @FormUrlEncoded
     @POST("authapi/login")
-    fun login(
+    suspend fun userLogin(
         @Field("username") username: String?,
         @Field("password") password: String?
-    ): Call<ResultLogin>
+    ): Response<AuthResponse>
 
     @FormUrlEncoded
     @POST("authapi/register")
@@ -35,4 +39,22 @@ interface ApiService {
 
     @GET("infoapi/getprogram")
     fun getAllProgram(): Call<ProgramResponse>
+
+    companion object {
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ): ApiService {
+
+            val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(networkConnectionInterceptor)
+                .build()
+
+            return Retrofit.Builder()
+                .client(okHttpClient)
+                .baseUrl("http://192.168.100.28/project-lmk/public/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ApiService::class.java)
+        }
+    }
 }

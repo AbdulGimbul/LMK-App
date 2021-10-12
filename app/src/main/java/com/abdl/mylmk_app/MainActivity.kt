@@ -5,23 +5,35 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.abdl.mylmk_app.databinding.ActivityMainBinding
-import com.abdl.mylmk_app.login.LoginActivity
+import com.abdl.mylmk_app.ui.auth.AuthViewModel
+import com.abdl.mylmk_app.ui.auth.AuthViewModelFactory
+import com.abdl.mylmk_app.ui.auth.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KodeinAware {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: AuthViewModel
+
+    override val kodein by kodein()
+    private val factory: AuthViewModelFactory by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         val navView: BottomNavigationView = binding.navView
 
@@ -48,10 +60,12 @@ class MainActivity : AppCompatActivity() {
 
             }
             R.id.logout -> {
+
                 val onLogout = Intent(this, LoginActivity::class.java)
                 onLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 onLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
+                viewModel.delete()
                 onLogout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(onLogout)
             }

@@ -1,13 +1,12 @@
 package com.abdl.mylmk_app.ui.profile
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.abdl.mylmk_app.data.repository.UserRepository
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(
+    repository: UserRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+    val user = repository.getUser()
+
 }

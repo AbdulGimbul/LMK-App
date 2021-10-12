@@ -3,9 +3,9 @@ package com.abdl.mylmk_app.register
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.abdl.mylmk_app.databinding.ActivityRegisterBinding
-import com.abdl.mylmk_app.login.LoginActivity
 import com.abdl.mylmk_app.register.presenter.RegisterPresenter
 import com.abdl.mylmk_app.register.presenter.RegisterView
+import com.abdl.mylmk_app.ui.auth.LoginActivity
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity

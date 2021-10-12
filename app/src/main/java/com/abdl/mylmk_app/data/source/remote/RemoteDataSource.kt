@@ -6,11 +6,12 @@ import com.abdl.mylmk_app.data.source.remote.model.GuruResponse
 import com.abdl.mylmk_app.data.source.remote.model.ProgramItem
 import com.abdl.mylmk_app.data.source.remote.model.ProgramResponse
 import com.abdl.mylmk_app.data.source.remote.services.ApiService
+import com.abdl.mylmk_app.data.source.remote.services.SafeApiRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RemoteDataSource constructor(private val apiService: ApiService) {
+class RemoteDataSource constructor(private val apiService: ApiService) : SafeApiRequest() {
     val guruList = ArrayList<GuruItem>()
     val errorMessage = MutableLiveData<String>()
 
