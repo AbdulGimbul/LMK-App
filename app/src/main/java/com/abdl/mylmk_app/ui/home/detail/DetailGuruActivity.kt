@@ -36,8 +36,9 @@ class DetailGuruActivity : AppCompatActivity() {
                 populateGuru(viewModel.getGuru())
             }
         }
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        supportActionBar?.elevation = 0f
+        supportActionBar?.title = "Detail Guru"
     }
 
     private fun populateGuru(guru: GuruEntity) {

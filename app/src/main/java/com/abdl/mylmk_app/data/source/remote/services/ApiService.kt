@@ -51,7 +51,7 @@ interface ApiService {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://192.168.100.28/project-lmk/public/")
+                .baseUrl("http://192.168.43.244/project-lmk/public/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ApiService::class.java)

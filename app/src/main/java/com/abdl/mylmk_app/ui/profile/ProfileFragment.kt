@@ -50,8 +50,11 @@ class ProfileFragment : Fragment(), KodeinAware {
 
     private fun getUser(user: UserEntity?) {
         with(binding) {
-            tvUser.text = user?.nama
-            tvAlamat.text = user?.alamat
+            tvName.text = user?.nama
+            tvAddress.text = user?.alamat
+            tvUsername.text = user?.username
+            tvPhoneNumber.text = user?.nohp.toString()
+            tvGender.text = user?.jk
         }
     }
 
