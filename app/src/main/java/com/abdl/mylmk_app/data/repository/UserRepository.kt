@@ -18,12 +18,12 @@ class UserRepository(
         return apiRequest { api.userLogin(email, password) }
     }
 
-    suspend fun saveUser(user: UserEntity) = db.getUserDao().upsert(user)
+    suspend fun saveUser(user: UserEntity) = db.getLmkDao().upsert(user)
 
-    fun getUser() = db.getUserDao().getUser()
+    fun getUser() = db.getLmkDao().getUser()
 
     fun delete() {
-        executorService.execute { db.getUserDao().deleteAll() }
+        executorService.execute { db.getLmkDao().deleteAll() }
     }
 
 }

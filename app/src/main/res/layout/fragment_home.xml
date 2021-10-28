@@ -124,7 +124,7 @@
                 android:paddingBottom="2dp">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_daftar_murif"
+                    android:id="@+id/cv_daftar_murid"
                     android:layout_width="0dp"
                     android:layout_height="65dp"
                     android:layout_margin="10dp"
@@ -160,7 +160,7 @@
                 android:paddingBottom="2dp">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/tentang_lmk"
+                    android:id="@+id/cv_tentang_lmk"
                     android:layout_width="0dp"
                     android:layout_height="65dp"
                     android:layout_margin="10dp"

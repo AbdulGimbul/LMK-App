@@ -2,6 +2,7 @@ package com.abdl.mylmk_app.data.source.remote.services
 
 import com.abdl.mylmk_app.data.source.remote.model.AuthResponse
 import com.abdl.mylmk_app.data.source.remote.model.GuruResponse
+import com.abdl.mylmk_app.data.source.remote.model.JadwalUserResponse
 import com.abdl.mylmk_app.data.source.remote.model.ProgramResponse
 import com.abdl.mylmk_app.register.data.ResultRegister
 import okhttp3.OkHttpClient
@@ -40,6 +41,9 @@ interface ApiService {
     @GET("infoapi/getprogram")
     fun getAllProgram(): Call<ProgramResponse>
 
+    @GET("jadwalapi/getjadwaluser")
+    fun getJadwalUser(): Call<JadwalUserResponse>
+
     companion object {
         operator fun invoke(
             networkConnectionInterceptor: NetworkConnectionInterceptor
@@ -51,7 +55,7 @@ interface ApiService {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://192.168.43.244/project-lmk/public/")
+                .baseUrl("http://192.168.0.104/project-lmk/public/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ApiService::class.java)

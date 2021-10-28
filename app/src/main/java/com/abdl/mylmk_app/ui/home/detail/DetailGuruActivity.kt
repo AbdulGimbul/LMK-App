@@ -28,6 +28,7 @@ class DetailGuruActivity : AppCompatActivity() {
             ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
         viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
+
         val extras = intent.extras
         if (extras != null) {
             val guruId = extras.getString(EXTRA_GURU)

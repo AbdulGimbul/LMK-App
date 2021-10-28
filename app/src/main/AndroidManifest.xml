@@ -14,31 +14,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLMKApp"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".ui.home.tentang.AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ngaji.jadwal.JadwalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ngaji.notes.NoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ngaji.notes.NoteAddUpdateActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.home.program.ProgramActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".ui.home.detail.DetailGuruActivity"
             android:exported="true"
             android:parentActivityName=".ui.home.guru.GuruActivity" />
-
         <activity
             android:name=".ui.home.guru.GuruActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".register.RegisterActivity"
             android:parentActivityName=".ui.auth.LoginActivity" />
-
         <activity android:name=".ui.auth.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

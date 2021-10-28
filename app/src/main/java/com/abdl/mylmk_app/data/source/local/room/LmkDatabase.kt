@@ -4,14 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
 import com.abdl.mylmk_app.data.source.local.entity.UserEntity
 
 @Database(
-    entities = [UserEntity::class],
-    version = 1
+    entities = [UserEntity::class, NoteEntity::class],
+    version = 2
 )
 abstract class LmkDatabase : RoomDatabase() {
-    abstract fun getUserDao(): UserDao
+    abstract fun getLmkDao(): LmkDao
 
     companion object {
         @Volatile
@@ -29,6 +30,8 @@ abstract class LmkDatabase : RoomDatabase() {
                 context.applicationContext,
                 LmkDatabase::class.java,
                 "MyDatabase.db"
-            ).build()
+            )
+                .fallbackToDestructiveMigration()
+                .build()
     }
 }

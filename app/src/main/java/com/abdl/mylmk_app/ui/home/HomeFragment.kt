@@ -14,6 +14,7 @@ import com.abdl.mylmk_app.ui.home.guru.GuruActivity
 import com.abdl.mylmk_app.ui.home.guru.GuruViewModel
 import com.abdl.mylmk_app.ui.home.program.ProgramActivity
 import com.abdl.mylmk_app.ui.home.program.ProgramViewModel
+import com.abdl.mylmk_app.ui.home.tentang.AboutUsActivity
 import com.abdl.mylmk_app.viewmodel.ViewModelFactory
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.startActivity
@@ -51,6 +52,9 @@ class HomeFragment : Fragment() {
         }
         _binding?.cvProgram?.onClick {
             startActivity<ProgramActivity>()
+        }
+        _binding?.cvTentangLmk?.onClick {
+            startActivity<AboutUsActivity>()
         }
 
         val factory =

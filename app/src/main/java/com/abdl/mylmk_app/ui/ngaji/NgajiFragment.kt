@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.abdl.mylmk_app.databinding.FragmentNgajiBinding
+import com.abdl.mylmk_app.ui.ngaji.jadwal.JadwalActivity
+import com.abdl.mylmk_app.ui.ngaji.notes.NoteActivity
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.startActivity
 
 class NgajiFragment : Fragment() {
 
@@ -27,6 +31,14 @@ class NgajiFragment : Fragment() {
 
         _binding = FragmentNgajiBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        _binding?.cvCatatanNgaji?.onClick {
+            startActivity<NoteActivity>()
+        }
+
+        _binding?.cvJadwal?.onClick {
+            startActivity<JadwalActivity>()
+        }
 
         return root
     }

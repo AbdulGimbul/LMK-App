@@ -1,6 +1,7 @@
 package com.abdl.mylmk_app.data.source.local
 
 import com.abdl.mylmk_app.data.source.local.entity.GuruEntity
+import com.abdl.mylmk_app.data.source.local.entity.JadwalEntity
 import com.abdl.mylmk_app.data.source.local.entity.ProgramEntity
 
 interface LocalDataSource {
@@ -9,4 +10,6 @@ interface LocalDataSource {
     fun getGuruById(guruId: String): GuruEntity
 
     fun getAllProgram(): List<ProgramEntity>
+
+    fun getJadwalUser(): List<JadwalEntity>
 }
