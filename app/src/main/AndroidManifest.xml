@@ -15,8 +15,12 @@
         android:theme="@style/Theme.MyLMKApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.home.tentang.AboutUsActivity"
+            android:name=".ui.home.pendaftaran.DaftarActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.home.tentang.AboutUsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.ngaji.jadwal.JadwalActivity"
             android:exported="false" />

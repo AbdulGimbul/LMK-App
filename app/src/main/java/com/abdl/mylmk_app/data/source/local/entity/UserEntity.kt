@@ -12,7 +12,7 @@ data class UserEntity(
     var username: String? = null,
     var jk: String? = null,
     var alamat: String? = null,
-    var nohp: Int? = null,
+    var nohp: Long? = null,
     var avatar: String? = null,
     var password: String? = null,
     var salt: String? = null,

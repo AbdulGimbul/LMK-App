@@ -12,6 +12,7 @@ import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
 import com.abdl.mylmk_app.databinding.FragmentHomeBinding
 import com.abdl.mylmk_app.ui.home.guru.GuruActivity
 import com.abdl.mylmk_app.ui.home.guru.GuruViewModel
+import com.abdl.mylmk_app.ui.home.pendaftaran.DaftarActivity
 import com.abdl.mylmk_app.ui.home.program.ProgramActivity
 import com.abdl.mylmk_app.ui.home.program.ProgramViewModel
 import com.abdl.mylmk_app.ui.home.tentang.AboutUsActivity
@@ -52,6 +53,9 @@ class HomeFragment : Fragment() {
         }
         _binding?.cvProgram?.onClick {
             startActivity<ProgramActivity>()
+        }
+        _binding?.cvDaftarMurid?.onClick {
+            startActivity<DaftarActivity>()
         }
         _binding?.cvTentangLmk?.onClick {
             startActivity<AboutUsActivity>()

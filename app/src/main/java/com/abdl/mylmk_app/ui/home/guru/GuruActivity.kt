@@ -19,8 +19,10 @@ class GuruActivity : AppCompatActivity() {
         activityGuruBinding = ActivityGuruBinding.inflate(layoutInflater)
         setContentView(activityGuruBinding.root)
 
+        val remoteDataSource = RemoteDataSource(ApiConfig.getService())
+
         val factory =
-            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
+            ViewModelFactory(MainRepository.getInstance(remoteDataSource))
         viewModel = ViewModelProvider(this, factory)[GuruViewModel::class.java]
 
         val guru = viewModel.getAllGuru()

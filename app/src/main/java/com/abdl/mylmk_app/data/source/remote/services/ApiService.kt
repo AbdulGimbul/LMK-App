@@ -26,7 +26,6 @@ interface ApiService {
     @FormUrlEncoded
     @POST("authapi/register")
     fun register(
-        @Field("nik") nik: String?,
         @Field("nama") nama: String?,
         @Field("username") username: String?,
         @Field("jk") jk: String?,
@@ -55,7 +54,7 @@ interface ApiService {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://192.168.0.104/project-lmk/public/")
+                .baseUrl("http://abdl.alterdev.id/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ApiService::class.java)

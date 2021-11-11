@@ -23,7 +23,6 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
 
         with(activityRegisterBinding) {
             btnRegister.onClick {
-                val nik = edtNik.text.toString()
                 val nama = edtNama.text.toString()
                 val username = edtUsername.text.toString()
                 val jk = edtJk.text.toString()
@@ -32,7 +31,7 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
                 val repeatPassword = repeatPass.text.toString()
 
 
-                presenter.register(nik, nama, username, jk, alamat, password, repeatPassword)
+                presenter.register(nama, username, jk, alamat, password, repeatPassword)
 
                 supportActionBar?.elevation = 0f
             }

@@ -9,6 +9,8 @@ import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
 import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
 import com.abdl.mylmk_app.databinding.ActivityDetailGuruBinding
 import com.abdl.mylmk_app.viewmodel.ViewModelFactory
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class DetailGuruActivity : AppCompatActivity() {
 
@@ -45,5 +47,10 @@ class DetailGuruActivity : AppCompatActivity() {
     private fun populateGuru(guru: GuruEntity) {
         activityDetailGuruBinding.tvName.text = guru.nama
         activityDetailGuruBinding.tvAddress.text = guru.alamat
+
+        Glide.with(this)
+            .load(guru.imagePath)
+            .apply(RequestOptions().override(350, 350))
+            .into(activityDetailGuruBinding.imgAvatar)
     }
 }

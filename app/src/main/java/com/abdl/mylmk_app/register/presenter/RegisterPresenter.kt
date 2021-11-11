@@ -8,7 +8,6 @@ import retrofit2.Response
 
 class RegisterPresenter(val registerView: RegisterView) {
     fun register(
-        nik: String?,
         nama: String?,
         username: String?,
         jk: String?,
@@ -17,7 +16,7 @@ class RegisterPresenter(val registerView: RegisterView) {
         repeatPassword: String?
     ) {
         ApiConfig.getService()
-            .register(nik, nama, username, jk, alamat, password, repeatPassword)
+            .register(nama, username, jk, alamat, password, repeatPassword)
             .enqueue(object : Callback<ResultRegister> {
                 override fun onFailure(call: Call<ResultRegister>, t: Throwable) {
                     registerView.onFailedRegister(t.localizedMessage)
