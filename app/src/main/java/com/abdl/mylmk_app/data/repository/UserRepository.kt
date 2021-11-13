@@ -7,8 +7,9 @@ import com.abdl.mylmk_app.data.source.remote.services.ApiService
 import com.abdl.mylmk_app.data.source.remote.services.SafeApiRequest
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import javax.inject.Inject
 
-class UserRepository(
+class UserRepository @Inject constructor(
     private val api: ApiService,
     private val db: LmkDatabase
 ) : SafeApiRequest() {

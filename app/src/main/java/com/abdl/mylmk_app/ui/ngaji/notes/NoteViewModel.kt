@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.abdl.mylmk_app.data.repository.NoteRepository
 import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class NoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
+@HiltViewModel
+class NoteViewModel @Inject constructor(private val noteRepository: NoteRepository) : ViewModel() {
 
     fun insert(note: NoteEntity) = noteRepository.insert(note)
 

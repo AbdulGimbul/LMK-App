@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.abdl.mylmk_app.data.repository.MainRepository
-import com.abdl.mylmk_app.data.source.local.entity.GuruEntity
 import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
+import com.abdl.mylmk_app.data.source.remote.model.GuruItem
 import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
 import com.abdl.mylmk_app.databinding.ActivityDetailGuruBinding
 import com.abdl.mylmk_app.viewmodel.ViewModelFactory
@@ -16,6 +16,8 @@ class DetailGuruActivity : AppCompatActivity() {
 
     private lateinit var activityDetailGuruBinding: ActivityDetailGuruBinding
     private lateinit var viewModel: DetailViewModel
+
+    private var guru: GuruItem? = null
 
     companion object {
         const val EXTRA_GURU = "extra_guru"
@@ -30,26 +32,28 @@ class DetailGuruActivity : AppCompatActivity() {
             ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
         viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
+//        val extras = intent.extras
+//        if (extras != null) {
+//            val guruId = extras.getString(EXTRA_GURU)
+//            if (guruId != null) {
+//                viewModel.setSelectedGuru(guruId)
+//                populateGuru(viewModel.getGuru())
+//            }
+//        }
 
-        val extras = intent.extras
-        if (extras != null) {
-            val guruId = extras.getString(EXTRA_GURU)
-            if (guruId != null) {
-                viewModel.setSelectedGuru(guruId)
-                populateGuru(viewModel.getGuru())
-            }
-        }
+        guru = intent.getParcelableExtra(EXTRA_GURU)
+        guru?.let { populateGuru(it) }
 
         supportActionBar?.elevation = 0f
         supportActionBar?.title = "Detail Guru"
     }
 
-    private fun populateGuru(guru: GuruEntity) {
+    private fun populateGuru(guru: GuruItem) {
         activityDetailGuruBinding.tvName.text = guru.nama
         activityDetailGuruBinding.tvAddress.text = guru.alamat
 
         Glide.with(this)
-            .load(guru.imagePath)
+            .load(guru.avatar)
             .apply(RequestOptions().override(350, 350))
             .into(activityDetailGuruBinding.imgAvatar)
     }

@@ -5,6 +5,8 @@ import androidx.room.*
 import com.abdl.mylmk_app.data.source.local.entity.CURRENT_USER_ID
 import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
 import com.abdl.mylmk_app.data.source.local.entity.UserEntity
+import com.abdl.mylmk_app.data.source.remote.model.GuruItem
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface LmkDao {
@@ -33,4 +35,14 @@ interface LmkDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAllNotes(list: List<NoteEntity>)
+
+    //DAO Guru
+    @Query("SELECT * FROM tbl_guru")
+    fun getAllGuru(): Flow<List<GuruItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGuru(guru: List<GuruItem>)
+
+    @Query("DELETE FROM tbl_guru")
+    suspend fun deleteAllGuru()
 }

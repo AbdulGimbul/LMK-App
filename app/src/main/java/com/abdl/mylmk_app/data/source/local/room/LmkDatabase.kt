@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
 import com.abdl.mylmk_app.data.source.local.entity.UserEntity
+import com.abdl.mylmk_app.data.source.remote.model.GuruItem
 
 @Database(
-    entities = [UserEntity::class, NoteEntity::class],
-    version = 2
+    entities = [UserEntity::class, NoteEntity::class, GuruItem::class],
+    version = 3
 )
 abstract class LmkDatabase : RoomDatabase() {
     abstract fun getLmkDao(): LmkDao

@@ -35,7 +35,7 @@ interface ApiService {
     ): Call<ResultRegister>
 
     @GET("guruapi")
-    fun getAllGuru(): Call<GuruResponse>
+    suspend fun getAllGuru(): GuruResponse
 
     @GET("infoapi/getprogram")
     fun getAllProgram(): Call<ProgramResponse>

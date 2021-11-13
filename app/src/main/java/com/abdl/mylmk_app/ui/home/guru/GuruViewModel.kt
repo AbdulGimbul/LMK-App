@@ -1,10 +1,13 @@
 package com.abdl.mylmk_app.ui.home.guru
 
 import androidx.lifecycle.ViewModel
-import com.abdl.mylmk_app.data.repository.MainRepository
-import com.abdl.mylmk_app.data.source.local.entity.GuruEntity
+import androidx.lifecycle.asLiveData
+import com.abdl.mylmk_app.data.repository.LmkRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class GuruViewModel constructor(private val repository: MainRepository) : ViewModel() {
+@HiltViewModel
+class GuruViewModel @Inject constructor(repository: LmkRepository) : ViewModel() {
 
-    fun getAllGuru(): List<GuruEntity> = repository.getAllGuru()
+    val guru = repository.getGuru().asLiveData()
 }

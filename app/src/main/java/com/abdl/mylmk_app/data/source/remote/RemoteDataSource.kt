@@ -9,7 +9,6 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.awaitResponse
 
 class RemoteDataSource constructor(private val apiService: ApiService) : SafeApiRequest() {
 
@@ -25,14 +24,14 @@ class RemoteDataSource constructor(private val apiService: ApiService) : SafeApi
 
     fun loadGuru() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = api.getAllGuru().awaitResponse()
+            val response = api.getAllGuru().guru
             withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    response.body()?.guru?.let { guruList.addAll(it) }
-                    loading.value = false
-                } else {
-                    onError("Error : ${response.message()}")
-                }
+//                if (response) {
+                response.let { guruList.addAll(it) }
+                loading.value = false
+//                } else {
+//                    onError("Error : ${response.message()}")
+//                }
             }
         }
     }

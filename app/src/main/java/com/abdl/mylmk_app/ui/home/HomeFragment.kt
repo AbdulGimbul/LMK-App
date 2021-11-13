@@ -11,7 +11,6 @@ import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
 import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
 import com.abdl.mylmk_app.databinding.FragmentHomeBinding
 import com.abdl.mylmk_app.ui.home.guru.GuruActivity
-import com.abdl.mylmk_app.ui.home.guru.GuruViewModel
 import com.abdl.mylmk_app.ui.home.pendaftaran.DaftarActivity
 import com.abdl.mylmk_app.ui.home.program.ProgramActivity
 import com.abdl.mylmk_app.ui.home.program.ProgramViewModel
@@ -23,7 +22,6 @@ import org.jetbrains.anko.support.v4.startActivity
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-    private lateinit var guruViewModel: GuruViewModel
     private lateinit var programViewModel: ProgramViewModel
     private var _binding: FragmentHomeBinding? = null
 
@@ -63,10 +61,8 @@ class HomeFragment : Fragment() {
 
         val factory =
             ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
-        guruViewModel = ViewModelProvider(this, factory)[GuruViewModel::class.java]
         programViewModel = ViewModelProvider(this, factory)[ProgramViewModel::class.java]
 
-        guruViewModel.getAllGuru()
         programViewModel.getAllProgram()
     }
 

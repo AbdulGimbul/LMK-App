@@ -5,25 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.abdl.mylmk_app.data.source.local.entity.UserEntity
 import com.abdl.mylmk_app.databinding.FragmentProfileBinding
-import com.abdl.mylmk_app.ui.auth.AuthViewModelFactory
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProfileFragment : Fragment(), KodeinAware {
+@AndroidEntryPoint
+class ProfileFragment : Fragment() {
 
-    override val kodein by kodein()
-
-    private lateinit var profileViewModel: ProfileViewModel
-    private val factory: AuthViewModelFactory by instance()
+    private val profileViewModel: ProfileViewModel by viewModels()
     private var _binding: FragmentProfileBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,9 +24,6 @@ class ProfileFragment : Fragment(), KodeinAware {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        profileViewModel =
-            ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

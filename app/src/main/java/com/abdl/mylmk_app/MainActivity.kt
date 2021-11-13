@@ -4,36 +4,29 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.abdl.mylmk_app.databinding.ActivityMainBinding
 import com.abdl.mylmk_app.ui.auth.AuthViewModel
-import com.abdl.mylmk_app.ui.auth.AuthViewModelFactory
 import com.abdl.mylmk_app.ui.auth.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity(), KodeinAware {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: AuthViewModel
-
-    override val kodein by kodein()
-    private val factory: AuthViewModelFactory by instance()
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         val navView: BottomNavigationView = binding.navView
 

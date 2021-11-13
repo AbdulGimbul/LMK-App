@@ -2,9 +2,9 @@ package com.abdl.mylmk_app.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.abdl.mylmk_app.MainActivity
 import com.abdl.mylmk_app.data.source.local.entity.UserEntity
@@ -12,27 +12,22 @@ import com.abdl.mylmk_app.databinding.ActivityLoginBinding
 import com.abdl.mylmk_app.register.RegisterActivity
 import com.abdl.mylmk_app.utils.ApiException
 import com.abdl.mylmk_app.utils.NoInternetException
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.toast
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
 
-class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
+@AndroidEntryPoint
+class LoginActivity : AppCompatActivity(), AuthListener {
 
-    override val kodein by kodein()
-    private val factory: AuthViewModelFactory by instance()
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModel: AuthViewModel
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         viewModel.getLoggedInUser().observe(this, Observer { user ->
             if (user != null) {

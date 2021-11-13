@@ -4,25 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdl.mylmk_app.R
 import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
 import com.abdl.mylmk_app.databinding.ActivityNoteBinding
 import com.google.android.material.snackbar.Snackbar
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import dagger.hilt.android.AndroidEntryPoint
 
-class NoteActivity : AppCompatActivity(), KodeinAware {
-    override val kodein by kodein()
-    private val factory: NoteViewModelFactory by instance()
+@AndroidEntryPoint
+class NoteActivity : AppCompatActivity() {
 
     private var _activityNoteBinding: ActivityNoteBinding? = null
     private val binding get() = _activityNoteBinding
 
+    private val noteViewModel: NoteViewModel by viewModels()
     private lateinit var adapter: NoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +28,6 @@ class NoteActivity : AppCompatActivity(), KodeinAware {
         _activityNoteBinding = ActivityNoteBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        val noteViewModel = ViewModelProvider(this, factory)[NoteViewModel::class.java]
         noteViewModel.getAllNotes().observe(this, noteObserver)
 
         adapter = NoteAdapter(this)

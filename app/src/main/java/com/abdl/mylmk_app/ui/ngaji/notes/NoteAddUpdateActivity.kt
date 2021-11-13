@@ -4,18 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.abdl.mylmk_app.R
 import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
 import com.abdl.mylmk_app.databinding.ActivityNoteAddUpdateBinding
 import com.abdl.mylmk_app.utils.DateHelper
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import dagger.hilt.android.AndroidEntryPoint
 
-class NoteAddUpdateActivity : AppCompatActivity(), KodeinAware {
+@AndroidEntryPoint
+class NoteAddUpdateActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_NOTE = "extra_note"
@@ -29,14 +28,11 @@ class NoteAddUpdateActivity : AppCompatActivity(), KodeinAware {
         const val ALERT_DIALOG_DELETE = 20
     }
 
-    override val kodein by kodein()
-    private val factory: NoteViewModelFactory by instance()
-
     private var isEdit = false
     private var note: NoteEntity? = null
     private var position = 0
 
-    private lateinit var noteViewModel: NoteViewModel
+    private val noteViewModel: NoteViewModel by viewModels()
 
     private var activityNoteAddUpdateBinding: ActivityNoteAddUpdateBinding? = null
     private val binding get() = activityNoteAddUpdateBinding
@@ -45,8 +41,6 @@ class NoteAddUpdateActivity : AppCompatActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
         activityNoteAddUpdateBinding = ActivityNoteAddUpdateBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
-        noteViewModel = ViewModelProvider(this, factory)[NoteViewModel::class.java]
 
         note = intent.getParcelableExtra(EXTRA_NOTE)
         if (note != null) {
