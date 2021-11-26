@@ -7,7 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GuruViewModel @Inject constructor(repository: LmkRepository) : ViewModel() {
+class GuruViewModel @Inject constructor(private val repository: LmkRepository) : ViewModel() {
 
     val guru = repository.getGuru().asLiveData()
+
 }

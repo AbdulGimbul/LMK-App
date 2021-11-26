@@ -1,18 +1,19 @@
 package com.abdl.mylmk_app.data.source.remote
 
 import androidx.lifecycle.MutableLiveData
-import com.abdl.mylmk_app.data.source.remote.model.*
-import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
+import com.abdl.mylmk_app.data.source.remote.model.GuruItem
+import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
+import com.abdl.mylmk_app.data.source.remote.model.ProgramItem
+import com.abdl.mylmk_app.data.source.remote.model.ProgramResponse
 import com.abdl.mylmk_app.data.source.remote.services.ApiService
 import com.abdl.mylmk_app.data.source.remote.services.SafeApiRequest
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class RemoteDataSource constructor(private val apiService: ApiService) : SafeApiRequest() {
-
-    val api = ApiConfig.getService()
+class RemoteDataSource @Inject constructor(private val apiService: ApiService) : SafeApiRequest() {
 
     val guruList = ArrayList<GuruItem>()
     var job: Job? = null
@@ -24,14 +25,10 @@ class RemoteDataSource constructor(private val apiService: ApiService) : SafeApi
 
     fun loadGuru() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = api.getAllGuru().guru
+            val response = apiService.getAllGuru().guru
             withContext(Dispatchers.Main) {
-//                if (response) {
                 response.let { guruList.addAll(it) }
                 loading.value = false
-//                } else {
-//                    onError("Error : ${response.message()}")
-//                }
             }
         }
     }
@@ -59,23 +56,14 @@ class RemoteDataSource constructor(private val apiService: ApiService) : SafeApi
 
     val jadwalList = ArrayList<JadwalUserItem>()
 
-    fun loadJadwal() {
-        val response = apiService.getJadwalUser()
-        response.enqueue(object : Callback<JadwalUserResponse> {
-            override fun onResponse(
-                call: Call<JadwalUserResponse>,
-                response: Response<JadwalUserResponse>
-            ) {
-                val result = response.body()?.jadwalUser
-                if (result != null) {
-                    jadwalList.addAll(result)
-                }
+    fun loadJadwal(idUser: Int) {
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = apiService.getJadwalUser(idUser).jadwalUser
+            withContext(Dispatchers.Main) {
+                response.let { jadwalList.addAll(it) }
+                loading.value = false
             }
-
-            override fun onFailure(call: Call<JadwalUserResponse>, t: Throwable) {
-                errorMessage.postValue(t.message)
-            }
-        })
+        }
     }
 
     private fun onError(message: String) {

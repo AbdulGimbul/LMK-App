@@ -4,13 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.abdl.mylmk_app.data.source.local.entity.HafalanEntity
 import com.abdl.mylmk_app.data.source.local.entity.NoteEntity
 import com.abdl.mylmk_app.data.source.local.entity.UserEntity
 import com.abdl.mylmk_app.data.source.remote.model.GuruItem
+import com.abdl.mylmk_app.data.source.remote.model.JadwalGuruItem
+import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
+import com.abdl.mylmk_app.di.ApplicationScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+import javax.inject.Provider
 
 @Database(
-    entities = [UserEntity::class, NoteEntity::class, GuruItem::class],
-    version = 3
+    entities = [UserEntity::class, NoteEntity::class, GuruItem::class, HafalanEntity::class, JadwalUserItem::class, JadwalGuruItem::class],
+    version = 1
 )
 abstract class LmkDatabase : RoomDatabase() {
     abstract fun getLmkDao(): LmkDao
@@ -34,5 +43,25 @@ abstract class LmkDatabase : RoomDatabase() {
             )
                 .fallbackToDestructiveMigration()
                 .build()
+    }
+
+    class Callback @Inject constructor(
+        private val database: Provider<LmkDatabase>,
+        @ApplicationScope private val applicationScope: CoroutineScope
+    ) : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+
+            //db operations
+            val dao = database.get().getLmkDao()
+
+            applicationScope.launch {
+                dao.insertHafalan(HafalanEntity("Q.S An-Nas"))
+                dao.insertHafalan(HafalanEntity("Q.S An-Nisa", important = true))
+                dao.insertHafalan(HafalanEntity("Q.S An-Naba", completed = true))
+                dao.insertHafalan(HafalanEntity("Q.S An-Nahl", important = true))
+                dao.insertHafalan(HafalanEntity("Q.S An-Naml"))
+            }
+        }
     }
 }

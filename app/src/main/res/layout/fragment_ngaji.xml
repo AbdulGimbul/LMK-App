@@ -53,6 +53,7 @@
                 android:paddingBottom="2dp">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_guru_saya"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -84,7 +85,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_jadwal"
+                    android:id="@+id/cv_jadwal_saya"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -157,6 +158,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_hafalan_saya"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.abdl.mylmk_app.databinding.FragmentNgajiBinding
+import com.abdl.mylmk_app.ui.ngaji.guru.MyGuruActivity
+import com.abdl.mylmk_app.ui.ngaji.hafalan.HafalanActivity
 import com.abdl.mylmk_app.ui.ngaji.jadwal.JadwalActivity
 import com.abdl.mylmk_app.ui.ngaji.notes.NoteActivity
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -36,8 +38,16 @@ class NgajiFragment : Fragment() {
             startActivity<NoteActivity>()
         }
 
-        _binding?.cvJadwal?.onClick {
+        _binding?.cvJadwalSaya?.onClick {
             startActivity<JadwalActivity>()
+        }
+
+        _binding?.cvHafalanSaya?.onClick {
+            startActivity<HafalanActivity>()
+        }
+
+        _binding?.cvGuruSaya?.onClick {
+            startActivity<MyGuruActivity>()
         }
 
         return root

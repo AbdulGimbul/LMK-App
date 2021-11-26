@@ -28,4 +28,36 @@ class LmkRepository @Inject constructor(
             }
         }
     )
+
+    fun getJadwal(idUser: Int) = networkBoundResource(
+        query = {
+            lmkDao.getJadwal()
+        },
+        fetch = {
+            delay(2000)
+            api.getJadwalUser(idUser).jadwalUser
+        },
+        saveFetchResult = { jadwal ->
+            db.withTransaction {
+                lmkDao.deleteJadwal()
+                lmkDao.insertJadwal(jadwal)
+            }
+        }
+    )
+
+    fun getJadwalGuru(idGuru: Int) = networkBoundResource(
+        query = {
+            lmkDao.getJadwalGuru()
+        },
+        fetch = {
+            delay(2000)
+            api.getJadwalGuru(idGuru).jadwalGuru
+        },
+        saveFetchResult = { jadwal ->
+            db.withTransaction {
+                lmkDao.deleteJadwalGuru()
+                lmkDao.insertJadwalGuru(jadwal)
+            }
+        }
+    )
 }

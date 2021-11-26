@@ -1,6 +1,6 @@
 package com.abdl.mylmk_app.register.presenter
 
-import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
+import com.abdl.mylmk_app.data.source.remote.services.RetrofitInstance
 import com.abdl.mylmk_app.register.data.ResultRegister
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +15,7 @@ class RegisterPresenter(val registerView: RegisterView) {
         password: String?,
         repeatPassword: String?
     ) {
-        ApiConfig.getService()
+        RetrofitInstance.api
             .register(nama, username, jk, alamat, password, repeatPassword)
             .enqueue(object : Callback<ResultRegister> {
                 override fun onFailure(call: Call<ResultRegister>, t: Throwable) {

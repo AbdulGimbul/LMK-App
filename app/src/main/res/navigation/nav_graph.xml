@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/hafalanFragment">
+
+    <fragment
+        android:id="@+id/hafalanFragment"
+        android:name="com.abdl.mylmk_app.ui.ngaji.hafalan.HafalanFragment"
+        android:label="Hafalan"
+        tools:layout="@layout/fragment_hafalan">
+        <action
+            android:id="@+id/action_hafalanFragment_to_hafalanAddUpdateFragment"
+            app:destination="@id/hafalanAddUpdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hafalanAddUpdateFragment"
+        android:name="com.abdl.mylmk_app.ui.ngaji.hafalan.HafalanAddUpdateFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_update_hafalan">
+        <argument
+            android:name="hafalan"
+            app:argType="com.abdl.mylmk_app.data.source.local.entity.HafalanEntity"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/deleteAllCompletedDialogFragment"
+        android:name="com.abdl.mylmk_app.ui.ngaji.hafalan.DeleteAllCompletedDialogFragment"
+        android:label="DeleteAllCompletedDialogFragment" />
+    <action
+        android:id="@+id/action_global_deleteAllCompletedDialogFragment"
+        app:destination="@id/deleteAllCompletedDialogFragment" />
+</navigation>

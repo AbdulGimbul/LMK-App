@@ -1,10 +1,13 @@
 package com.abdl.mylmk_app.ui.ngaji.jadwal
 
 import androidx.lifecycle.ViewModel
-import com.abdl.mylmk_app.data.repository.MainRepository
-import com.abdl.mylmk_app.data.source.local.entity.JadwalEntity
+import androidx.lifecycle.asLiveData
+import com.abdl.mylmk_app.data.repository.LmkRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class JadwalViewModel constructor(private val repository: MainRepository) : ViewModel() {
+@HiltViewModel
+class JadwalViewModel @Inject constructor(private val repository: LmkRepository) : ViewModel() {
 
-    fun getJadwalUser(): List<JadwalEntity> = repository.getJadwalUser()
+    fun getJadwal(idUser: Int) = repository.getJadwal(idUser).asLiveData()
 }

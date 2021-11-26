@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.abdl.mylmk_app.data.repository.MainRepository
 import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
-import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
+import com.abdl.mylmk_app.data.source.remote.services.RetrofitInstance
 import com.abdl.mylmk_app.databinding.FragmentHomeBinding
 import com.abdl.mylmk_app.ui.home.guru.GuruActivity
 import com.abdl.mylmk_app.ui.home.pendaftaran.DaftarActivity
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         }
 
         val factory =
-            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
+            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(RetrofitInstance.api)))
         programViewModel = ViewModelProvider(this, factory)[ProgramViewModel::class.java]
 
         programViewModel.getAllProgram()

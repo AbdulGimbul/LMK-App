@@ -15,6 +15,13 @@
         android:theme="@style/Theme.MyLMKApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.ngaji.guru.MyGuruActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ngaji.hafalan.HafalanActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.home.pendaftaran.DaftarActivity"
             android:exported="false" />
         <activity
@@ -29,7 +36,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.ngaji.notes.NoteAddUpdateActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.ngaji.notes.NoteActivity" />
         <activity
             android:name=".ui.home.program.ProgramActivity"
             android:exported="true"

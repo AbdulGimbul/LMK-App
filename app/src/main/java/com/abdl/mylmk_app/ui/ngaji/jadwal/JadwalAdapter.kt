@@ -4,14 +4,14 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abdl.mylmk_app.data.source.local.entity.JadwalEntity
+import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
 import com.abdl.mylmk_app.databinding.ItemJadwalBinding
 
 class JadwalAdapter : RecyclerView.Adapter<JadwalAdapter.JadwalViewHolder>() {
-    val jadwal = ArrayList<JadwalEntity>()
+    val jadwal = ArrayList<JadwalUserItem>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setJadwalList(jadwal: List<JadwalEntity>) {
+    fun setJadwalList(jadwal: List<JadwalUserItem>?) {
         if (jadwal == null) return
         this.jadwal.clear()
         this.jadwal.addAll(jadwal)
@@ -34,7 +34,7 @@ class JadwalAdapter : RecyclerView.Adapter<JadwalAdapter.JadwalViewHolder>() {
 
     inner class JadwalViewHolder(val binding: ItemJadwalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(jadwal: JadwalEntity) {
+        fun bind(jadwal: JadwalUserItem) {
             with(binding) {
                 tvHari.text = jadwal.hari
                 tvPukul.text = jadwal.jam

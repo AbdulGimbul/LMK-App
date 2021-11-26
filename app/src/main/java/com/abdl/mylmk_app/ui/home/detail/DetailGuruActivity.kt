@@ -1,21 +1,21 @@
 package com.abdl.mylmk_app.ui.home.detail
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.abdl.mylmk_app.data.repository.MainRepository
-import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdl.mylmk_app.data.source.remote.model.GuruItem
-import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
 import com.abdl.mylmk_app.databinding.ActivityDetailGuruBinding
-import com.abdl.mylmk_app.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailGuruActivity : AppCompatActivity() {
 
     private lateinit var activityDetailGuruBinding: ActivityDetailGuruBinding
-    private lateinit var viewModel: DetailViewModel
+    private val viewModel: DetailViewModel by viewModels()
 
     private var guru: GuruItem? = null
 
@@ -28,24 +28,28 @@ class DetailGuruActivity : AppCompatActivity() {
         activityDetailGuruBinding = ActivityDetailGuruBinding.inflate(layoutInflater)
         setContentView(activityDetailGuruBinding.root)
 
-        val factory =
-            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
-        viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
-
-//        val extras = intent.extras
-//        if (extras != null) {
-//            val guruId = extras.getString(EXTRA_GURU)
-//            if (guruId != null) {
-//                viewModel.setSelectedGuru(guruId)
-//                populateGuru(viewModel.getGuru())
-//            }
-//        }
-
         guru = intent.getParcelableExtra(EXTRA_GURU)
         guru?.let { populateGuru(it) }
 
-        supportActionBar?.elevation = 0f
-        supportActionBar?.title = "Detail Guru"
+        val idGuru = guru?.id_guru?.toInt()
+
+        val jadwalAdapter = JadwalGuruAdapter()
+
+        activityDetailGuruBinding.apply {
+            rvJadwalGuru.apply {
+                adapter = jadwalAdapter
+                layoutManager = LinearLayoutManager(this@DetailGuruActivity)
+            }
+
+            if (idGuru != null) {
+                viewModel.getJadwalGuru(idGuru).observe(this@DetailGuruActivity, Observer {
+                    jadwalAdapter.setJadwalList(it.data)
+                })
+            }
+
+            supportActionBar?.elevation = 0f
+            supportActionBar?.title = "Detail Guru"
+        }
     }
 
     private fun populateGuru(guru: GuruItem) {

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.abdl.mylmk_app.data.source.local.entity.ProgramEntity
 import com.abdl.mylmk_app.databinding.ItemProgramBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class ProgramAdapter : RecyclerView.Adapter<ProgramAdapter.ProgramViewHolder>() {
     var programList = ArrayList<ProgramEntity>()
@@ -46,6 +48,11 @@ class ProgramAdapter : RecyclerView.Adapter<ProgramAdapter.ProgramViewHolder>() 
             with(binding) {
                 tvProgramTitle.text = program.judul
                 tvProgramDescription.text = program.deskripsi
+
+                Glide.with(itemView.context)
+                    .load(program.gambar)
+                    .apply(RequestOptions().override(55, 55))
+                    .into(imgProgram)
 
                 expandedProgram.visibility = if (program.expand) View.VISIBLE else View.GONE
             }

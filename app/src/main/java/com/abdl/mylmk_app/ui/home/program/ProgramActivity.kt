@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdl.mylmk_app.data.repository.MainRepository
 import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
-import com.abdl.mylmk_app.data.source.remote.services.ApiConfig
+import com.abdl.mylmk_app.data.source.remote.services.RetrofitInstance
 import com.abdl.mylmk_app.databinding.ActivityProgramBinding
 import com.abdl.mylmk_app.viewmodel.ViewModelFactory
 
@@ -20,7 +20,7 @@ class ProgramActivity : AppCompatActivity() {
         setContentView(activityProgramBinding.root)
 
         val factory =
-            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(ApiConfig.getService())))
+            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(RetrofitInstance.api)))
         viewModel = ViewModelProvider(this, factory)[ProgramViewModel::class.java]
 
         val program = viewModel.getAllProgram()

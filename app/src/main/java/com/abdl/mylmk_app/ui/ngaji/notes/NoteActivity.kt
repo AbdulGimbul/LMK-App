@@ -42,6 +42,8 @@ class NoteActivity : AppCompatActivity() {
                 getResult.launch(intent)
             }
         }
+
+        supportActionBar?.elevation = 0f
     }
 
     private val getResult =
