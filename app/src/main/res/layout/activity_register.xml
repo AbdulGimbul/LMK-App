@@ -20,22 +20,19 @@
             android:src="@drawable/bg_login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".27"
+            app:layout_constraintHeight_percent=".25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/view_bg"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".78"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1">
+            android:layout_marginTop="130dp">
 
             <EditText
                 android:id="@+id/edt_nama"
@@ -44,114 +41,167 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_bg"
                 android:hint="Nama Lengkap"
-                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias=".1"
+                app:layout_constraintVertical_bias="0.03"
                 app:layout_constraintWidth_percent=".8" />
 
             <EditText
                 android:id="@+id/edt_username"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Username"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_bg"
+                android:hint="Username"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_nama"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent=".8" />
 
-            <EditText
-                android:id="@+id/edt_jk"
+            <TextView
+                android:id="@+id/tv_rg"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Jenis Kelamin"
-                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_bg"
+                android:text="Jenis Kelamin :"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_username"
+                app:layout_constraintTop_toBottomOf="@id/edt_username"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent=".8" />
+
+            <RadioGroup
+                android:id="@+id/rg_jk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rg"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent=".8">
+
+                <RadioButton
+                    android:id="@+id/rb_lk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="24dp"
+                    android:checked="true"
+                    android:text="Laki-laki" />
+
+                <RadioButton
+                    android:id="@+id/rb_pr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perempuan" />
+            </RadioGroup>
 
             <EditText
                 android:id="@+id/edt_alamat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
                 android:hint="Alamat"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:overScrollMode="always"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_bg"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_jk"
+                app:layout_constraintTop_toBottomOf="@id/rg_jk"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent=".8" />
+
+            <EditText
+                android:id="@+id/edt_nohp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_text_bg"
+                android:hint="Nomor hp"
+                android:inputType="numberDecimal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edt_alamat"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent=".8" />
 
             <EditText
                 android:id="@+id/edt_pass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_text_bg"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_alamat"
+                app:layout_constraintTop_toBottomOf="@+id/edt_nohp"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent=".8" />
 
             <EditText
                 android:id="@+id/repeat_pass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_text_bg"
                 android:hint="Confirm Password"
+                android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edit_text_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_pass"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent=".8" />
 
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/button_bg"
                 android:text="Register"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/repeat_pass"
-                app:layout_constraintVertical_bias=".9"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent=".8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

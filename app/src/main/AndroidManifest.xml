@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".di.MVVMApplication"
@@ -56,7 +57,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".register.RegisterActivity"
-            android:parentActivityName=".ui.auth.LoginActivity" />
+            android:parentActivityName=".ui.auth.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.auth.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

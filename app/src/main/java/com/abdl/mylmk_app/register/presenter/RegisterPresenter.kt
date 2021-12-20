@@ -12,11 +12,12 @@ class RegisterPresenter(val registerView: RegisterView) {
         username: String?,
         jk: String?,
         alamat: String?,
+        no_hp: String?,
         password: String?,
         repeatPassword: String?
     ) {
         RetrofitInstance.api
-            .register(nama, username, jk, alamat, password, repeatPassword)
+            .register(nama, username, jk, alamat, no_hp, password, repeatPassword)
             .enqueue(object : Callback<ResultRegister> {
                 override fun onFailure(call: Call<ResultRegister>, t: Throwable) {
                     registerView.onFailedRegister(t.localizedMessage)
@@ -26,7 +27,7 @@ class RegisterPresenter(val registerView: RegisterView) {
                     call: Call<ResultRegister>,
                     response: Response<ResultRegister>
                 ) {
-                    if (response.body()?.status == 200) {
+                    if (response.body()?.status == 201) {
                         registerView.onSuccessRegister(response.body()?.message)
                     } else {
                         registerView.onFailedRegister(response.body()?.message)
@@ -34,4 +35,5 @@ class RegisterPresenter(val registerView: RegisterView) {
                 }
             })
     }
+
 }

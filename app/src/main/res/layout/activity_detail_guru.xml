@@ -9,6 +9,7 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/teal_700"
         android:paddingBottom="20dp">
 
         <RelativeLayout
@@ -34,6 +35,8 @@
             android:layout_below="@id/imgUser"
             android:layout_centerHorizontal="true"
             android:text="name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="32sp" />
 
         <TextView
@@ -43,7 +46,8 @@
             android:layout_below="@id/tv_name"
             android:layout_centerHorizontal="true"
             android:text="location"
-            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="13sp" />
 
     </RelativeLayout>
@@ -60,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/followingBg"
+            android:background="@color/common_google_signin_btn_text_light_default"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">

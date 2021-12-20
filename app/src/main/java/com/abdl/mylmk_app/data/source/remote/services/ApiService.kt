@@ -1,10 +1,9 @@
 package com.abdl.mylmk_app.data.source.remote.services
 
-import com.abdl.mylmk_app.data.source.remote.model.AuthResponse
-import com.abdl.mylmk_app.data.source.remote.model.GuruResponse
-import com.abdl.mylmk_app.data.source.remote.model.JadwalResponse
-import com.abdl.mylmk_app.data.source.remote.model.ProgramResponse
+import com.abdl.mylmk_app.data.source.remote.model.*
 import com.abdl.mylmk_app.register.data.ResultRegister
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -24,9 +23,28 @@ interface ApiService {
         @Field("username") username: String?,
         @Field("jk") jk: String?,
         @Field("alamat") alamat: String?,
+        @Field("no_hp") no_hp: String?,
         @Field("password") password: String?,
         @Field("repeatPassword") repeatPassword: String?
     ): Call<ResultRegister>
+
+    @FormUrlEncoded
+    @PUT("userapi/{id}")
+    fun updateProfile(
+        @Path("id") idUser: Int?,
+        @Field("nama") name: String?,
+        @Field("username") username: String?,
+        @Field("alamat") alamat: String?,
+        @Field("nohp") no_hp: String?
+    ): Call<ResultStatus>
+
+    @Multipart
+    @POST("userapi/updatefoto/{id}")
+    fun uploadImage(
+        @Path("id") idUser: Int?,
+        @Part image: MultipartBody.Part,
+        @Part("_method") _method: RequestBody
+    ): Call<UploadResponse>
 
     @GET("guruapi")
     suspend fun getAllGuru(): GuruResponse

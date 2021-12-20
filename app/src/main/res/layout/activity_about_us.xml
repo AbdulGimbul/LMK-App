@@ -45,7 +45,7 @@
         <TextView
             style="@style/TextContent.Subtitle"
             android:layout_marginBottom="16dp"
-            android:text="Jl. Banijah No. 30 Desa/Kec. Maleber" />
+            android:text="Jl. Kramatmulya - Cikaso No.65, Karangmangu, Kec. Kramatmulya, Kabupaten Kuningan, Jawa Barat 45553" />
 
         <TextView
             style="@style/TextContent"
@@ -67,13 +67,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp">
 
-                <TextView
-                    style="@style/TextSpec.Field"
-                    android:text="Logo WA" />
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="16dp"
+                    android:contentDescription="WhatsApp"
+                    android:src="@drawable/wa" />
 
                 <TextView
                     style="@style/TextSpec.Value"
-                    android:text="WhatsApp" />
+                    android:text="62896-6255-5906" />
             </TableRow>
 
             <TableRow
@@ -81,28 +85,36 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp">
 
-                <TextView
-                    style="@style/TextSpec.Field"
-                    android:text="Logo IG" />
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="16dp"
+                    android:contentDescription="Instagram"
+                    android:src="@drawable/ig" />
 
                 <TextView
                     style="@style/TextSpec.Value"
-                    android:text="Instagram" />
+                    android:text="www.instagram.com/lesmengaji_kuningan/" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+            <!--            <TableRow-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="8dp">-->
 
-                <TextView
-                    style="@style/TextSpec.Field"
-                    android:text="Logo FB" />
+            <!--                <ImageView-->
+            <!--                    android:layout_width="25dp"-->
+            <!--                    android:layout_height="25dp"-->
+            <!--                    android:contentDescription="Facebook"-->
+            <!--                    android:layout_marginRight="16dp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:src="@drawable/fb"/>-->
 
-                <TextView
-                    style="@style/TextSpec.Value"
-                    android:text="Facebook" />
-            </TableRow>
+            <!--                <TextView-->
+            <!--                    style="@style/TextSpec.Value"-->
+            <!--                    android:text="Facebook" />-->
+            <!--            </TableRow>-->
         </TableLayout>
 
         <TextView

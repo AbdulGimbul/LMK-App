@@ -47,4 +47,6 @@
     <string name="menu_newest">Newest</string>
     <string name="menu_oldest">Oldest</string>
     <string name="manu_random">Random</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

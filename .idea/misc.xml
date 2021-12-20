@@ -5,29 +5,33 @@
       <map>
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/drawable-v24/ic_add.xml" value="0.18518518518518517" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/drawable-v24/ic_clear.xml" value="0.1" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/drawable/button_bg.xml" value="0.19166666666666668" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/drawable/circle.xml" value="0.1125" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/drawable/edit_text_bg.xml" value="0.19166666666666668" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_about_us.xml" value="0.209375" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_daftar.xml" value="0.18" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_detail_guru.xml" value="0.18614130434782608" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_guru.xml" value="0.17481884057971014" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_hafalan.xml" value="0.17980072463768115" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_jadwal.xml" value="0.209375" />
-        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_login.xml" value="0.135258358662614" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_my_guru.xml" value="0.1585144927536232" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_note.xml" value="0.209375" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_note_add_update.xml" value="0.209375" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_program.xml" value="0.18568840579710144" />
-        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_register.xml" value="0.18" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_add_update_hafalan.xml" value="0.17980072463768115" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_hafalan.xml" value="0.17980072463768115" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_home.xml" value="0.18070652173913043" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_ngaji.xml" value="0.18070652173913043" />
-        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_profile.xml" value="0.18070652173913043" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_profile.xml" value="0.17" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/fragment_profile_update.xml" value="0.22" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_guru.xml" value="0.18" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_guru_saya.xml" value="0.1308876811594203" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_hafalan.xml" value="0.17980072463768115" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_jadwal.xml" value="0.209375" />
-        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_jadwal_guru.xml" value="0.5" />
+        <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_jadwal_guru.xml" value="0.2" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_note.xml" value="0.209375" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/layout/item_program.xml" value="0.17543859649122806" />
         <entry key="..\:/Abdul's Data/Coding/Android/MyLMK-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.209375" />
