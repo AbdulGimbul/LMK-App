@@ -1,10 +1,13 @@
 package com.abdl.mylmk_app.ui.home.program
 
 import androidx.lifecycle.ViewModel
-import com.abdl.mylmk_app.data.repository.MainRepository
-import com.abdl.mylmk_app.data.source.local.entity.ProgramEntity
+import androidx.lifecycle.asLiveData
+import com.abdl.mylmk_app.data.repository.LmkRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProgramViewModel constructor(private val repository: MainRepository) : ViewModel() {
+@HiltViewModel
+class ProgramViewModel @Inject constructor(private val repository: LmkRepository) : ViewModel() {
 
-    fun getAllProgram(): List<ProgramEntity> = repository.getAllProgram()
+    val program = repository.getProgram().asLiveData()
 }

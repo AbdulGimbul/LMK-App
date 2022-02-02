@@ -60,7 +60,7 @@ class MainRepository @Inject constructor(private val remoteDataSource: RemoteDat
     }
 
     override fun getAllProgram(): List<ProgramEntity> {
-        remoteDataSource.loadProgram()
+//        remoteDataSource.loadProgram()
         val programResponse = remoteDataSource.programList
         val programList = ArrayList<ProgramEntity>()
         for (response in programResponse) {

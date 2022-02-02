@@ -11,6 +11,7 @@ import com.abdl.mylmk_app.data.source.local.entity.UserEntity
 import com.abdl.mylmk_app.data.source.remote.model.GuruItem
 import com.abdl.mylmk_app.data.source.remote.model.JadwalGuruItem
 import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
+import com.abdl.mylmk_app.data.source.remote.model.ProgramItem
 import com.abdl.mylmk_app.di.ApplicationScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -18,8 +19,8 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 @Database(
-    entities = [UserEntity::class, NoteEntity::class, GuruItem::class, HafalanEntity::class, JadwalUserItem::class, JadwalGuruItem::class],
-    version = 1
+    entities = [UserEntity::class, NoteEntity::class, GuruItem::class, HafalanEntity::class, JadwalUserItem::class, JadwalGuruItem::class, ProgramItem::class],
+    version = 3
 )
 abstract class LmkDatabase : RoomDatabase() {
     abstract fun getLmkDao(): LmkDao

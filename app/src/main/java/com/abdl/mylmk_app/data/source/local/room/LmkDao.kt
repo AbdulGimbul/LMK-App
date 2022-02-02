@@ -10,6 +10,7 @@ import com.abdl.mylmk_app.data.source.local.entity.UserEntity
 import com.abdl.mylmk_app.data.source.remote.model.GuruItem
 import com.abdl.mylmk_app.data.source.remote.model.JadwalGuruItem
 import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
+import com.abdl.mylmk_app.data.source.remote.model.ProgramItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -39,6 +40,16 @@ interface LmkDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAllNotes(list: List<NoteEntity>)
+
+    //DAO Program
+    @Query("SELECT * FROM tbl_program")
+    fun getAllProgram(): Flow<List<ProgramItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertProgram(program: List<ProgramItem>)
+
+    @Query("DELETE FROM tbl_program")
+    suspend fun deleteAllProgram()
 
     //DAO Guru
     @Query("SELECT * FROM tbl_guru")

@@ -49,4 +49,7 @@
     <string name="manu_random">Random</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="abdl">Muhamad Abdul Aziz</string>
+    <string name="email">NIM. 20170810069</string>
+    <string name="kompetensi"><u>Guru Ngaji</u></string>
 </resources>

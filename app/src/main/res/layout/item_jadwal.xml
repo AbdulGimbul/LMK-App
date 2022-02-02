@@ -20,7 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_murid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="ini nama murid"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
             <TableLayout
                 android:layout_width="match_parent"

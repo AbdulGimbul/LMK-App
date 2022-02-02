@@ -27,11 +27,11 @@ class GuruActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@GuruActivity)
             }
 
-            viewModel.guru.observe(this@GuruActivity) { result ->
+            viewModel.guru.observe(this@GuruActivity, { result ->
                 guruAdapter.setGuruList(result.data)
 
                 progressBar.isVisible = result is Resource.Loading && result.data.isNullOrEmpty()
-            }
+            })
         }
     }
 }

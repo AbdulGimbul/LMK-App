@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abdl.mylmk_app.data.source.local.entity.ProgramEntity
+import com.abdl.mylmk_app.data.source.remote.model.ProgramItem
 import com.abdl.mylmk_app.databinding.ItemProgramBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 class ProgramAdapter : RecyclerView.Adapter<ProgramAdapter.ProgramViewHolder>() {
-    var programList = ArrayList<ProgramEntity>()
+    var programList = ArrayList<ProgramItem>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setProgramList(program: List<ProgramEntity>) {
+    fun setProgramList(program: List<ProgramItem>?) {
         if (program == null) return
         this.programList.clear()
         this.programList.addAll(program)
@@ -44,14 +44,14 @@ class ProgramAdapter : RecyclerView.Adapter<ProgramAdapter.ProgramViewHolder>() 
 
     class ProgramViewHolder(val binding: ItemProgramBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(program: ProgramEntity) {
+        fun bind(program: ProgramItem) {
             with(binding) {
                 tvProgramTitle.text = program.judul
                 tvProgramDescription.text = program.deskripsi
 
                 Glide.with(itemView.context)
                     .load(program.gambar)
-                    .apply(RequestOptions().override(55, 55))
+                    .apply(RequestOptions().override(350, 350))
                     .into(imgProgram)
 
                 expandedProgram.visibility = if (program.expand) View.VISIBLE else View.GONE

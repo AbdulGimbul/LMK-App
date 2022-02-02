@@ -16,6 +16,10 @@
         android:theme="@style/Theme.MyLMKApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ui.ngaji.guru.MyGuruActivity"
             android:exported="false" />
         <activity

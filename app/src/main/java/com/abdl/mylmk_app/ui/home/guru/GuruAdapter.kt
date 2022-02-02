@@ -45,11 +45,12 @@ class GuruAdapter : RecyclerView.Adapter<GuruAdapter.GuruViewHolder>() {
         fun bind(guru: GuruItem) {
             with(binding) {
                 tvItemName.text = guru.nama
+                tvKompetensi.text = "Kompetensi : Guru Ngaji"
                 tvUserDetail.text = guru.alamat
 
                 Glide.with(itemView.context)
                     .load(guru.avatar)
-                    .apply(RequestOptions().override(55, 55))
+                    .apply(RequestOptions().override(250, 250))
                     .into(imgItemPhoto)
 
                 itemView.setOnClickListener {

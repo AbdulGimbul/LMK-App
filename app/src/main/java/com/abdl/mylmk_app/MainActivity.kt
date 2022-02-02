@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.abdl.mylmk_app.databinding.ActivityMainBinding
+import com.abdl.mylmk_app.ui.AboutActivity
 import com.abdl.mylmk_app.ui.auth.AuthViewModel
 import com.abdl.mylmk_app.ui.auth.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -50,10 +51,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.info_app -> {
-
+                startActivity(Intent(this, AboutActivity::class.java))
             }
             R.id.logout -> {
-
                 val onLogout = Intent(this, LoginActivity::class.java)
                 onLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 onLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.delete()
                 onLogout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(onLogout)
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)

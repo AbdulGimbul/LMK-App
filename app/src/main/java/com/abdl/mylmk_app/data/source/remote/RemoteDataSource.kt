@@ -4,13 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import com.abdl.mylmk_app.data.source.remote.model.GuruItem
 import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
 import com.abdl.mylmk_app.data.source.remote.model.ProgramItem
-import com.abdl.mylmk_app.data.source.remote.model.ProgramResponse
 import com.abdl.mylmk_app.data.source.remote.services.ApiService
 import com.abdl.mylmk_app.data.source.remote.services.SafeApiRequest
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) : SafeApiRequest() {
@@ -35,24 +31,24 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
 
     val programList = ArrayList<ProgramItem>()
 
-    fun loadProgram() {
-        val response = apiService.getAllProgram()
-        response.enqueue(object : Callback<ProgramResponse> {
-            override fun onResponse(
-                call: Call<ProgramResponse>,
-                response: Response<ProgramResponse>
-            ) {
-                val result = response.body()?.program
-                if (result != null) {
-                    programList.addAll(result)
-                }
-            }
-
-            override fun onFailure(call: Call<ProgramResponse>, t: Throwable) {
-                errorMessage.postValue(t.message)
-            }
-        })
-    }
+//    fun loadProgram() {
+//        val response = apiService.getAllProgram()
+//        response.enqueue(object : Callback<ProgramResponse> {
+//            override fun onResponse(
+//                call: Call<ProgramResponse>,
+//                response: Response<ProgramResponse>
+//            ) {
+//                val result = response.body()?.program
+//                if (result != null) {
+//                    programList.addAll(result)
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ProgramResponse>, t: Throwable) {
+//                errorMessage.postValue(t.message)
+//            }
+//        })
+//    }
 
     val jadwalList = ArrayList<JadwalUserItem>()
 

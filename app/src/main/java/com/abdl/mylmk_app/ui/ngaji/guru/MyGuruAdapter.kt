@@ -1,11 +1,17 @@
 package com.abdl.mylmk_app.ui.ngaji.guru
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.abdl.mylmk_app.data.source.remote.model.JadwalUserItem
 import com.abdl.mylmk_app.databinding.ItemGuruSayaBinding
+import com.abdl.mylmk_app.ui.home.detail.DetailGuruActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MyGuruAdapter : RecyclerView.Adapter<MyGuruAdapter.JadwalViewHolder>() {
     var jadwal = ArrayList<JadwalUserItem>()
@@ -14,7 +20,7 @@ class MyGuruAdapter : RecyclerView.Adapter<MyGuruAdapter.JadwalViewHolder>() {
     fun setJadwalList(jadwal: List<JadwalUserItem>?) {
         if (jadwal == null) return
         this.jadwal.clear()
-        this.jadwal.addAll(jadwal)
+        this.jadwal.addAll(jadwal.distinctBy { it.namaGuru })
         notifyDataSetChanged()
     }
 
@@ -39,9 +45,30 @@ class MyGuruAdapter : RecyclerView.Adapter<MyGuruAdapter.JadwalViewHolder>() {
     class JadwalViewHolder(val binding: ItemGuruSayaBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(jadwal: JadwalUserItem) {
+            val sdf = SimpleDateFormat("HH.mm")
+            val current = jadwal.jam
+            val date = sdf.parse(current)
+            val calendar = Calendar.getInstance()
+
+            calendar.time = date
+            calendar.add(Calendar.HOUR, 1)
+
+            val tambahJam = sdf.format(calendar.time)
+
             with(binding) {
+                tvMurid.text = "Guru ngaji ${jadwal.namaMurid}"
                 tvItemName.text = jadwal.namaGuru
-                tvUserDetail.text = "Hari : ${jadwal.hari} | Pukul : ${jadwal.jam}"
+                tvUserDetail.text = "Alamat : ${jadwal.alamatGuru}"
+                Glide.with(itemView.context)
+                    .load(jadwal.avatarGuru)
+                    .apply(RequestOptions().override(150, 150))
+                    .into(imgItemPhoto)
+
+                itemView.setOnClickListener {
+                    val intent = Intent(itemView.context, DetailGuruActivity::class.java)
+                    intent.putExtra(DetailGuruActivity.EXTRA_MY_GURU, jadwal)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

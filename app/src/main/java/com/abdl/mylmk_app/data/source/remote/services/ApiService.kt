@@ -50,7 +50,7 @@ interface ApiService {
     suspend fun getAllGuru(): GuruResponse
 
     @GET("infoapi/getprogram")
-    fun getAllProgram(): Call<ProgramResponse>
+    suspend fun getAllProgram(): ProgramResponse
 
     @GET("jadwalapi/getjadwaluser/{id_user}")
     suspend fun getJadwalUser(

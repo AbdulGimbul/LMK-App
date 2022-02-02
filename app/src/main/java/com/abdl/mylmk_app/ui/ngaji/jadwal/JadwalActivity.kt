@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdl.mylmk_app.databinding.ActivityJadwalBinding
 import com.abdl.mylmk_app.ui.profile.ProfileViewModel
+import com.abdl.mylmk_app.vo.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,6 +39,9 @@ class JadwalActivity : AppCompatActivity() {
                 Log.d("JadwalActivity", "cek $idUser")
                 viewModel.getJadwal(idUser).observe(this@JadwalActivity, Observer { result ->
                     jadwalAdapter.setJadwalList(result.data)
+
+                    activityJadwalBinding.progressBar.isVisible =
+                        result is Resource.Loading && result.data.isNullOrEmpty()
                 })
             })
         }

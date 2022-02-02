@@ -6,23 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.abdl.mylmk_app.data.repository.MainRepository
-import com.abdl.mylmk_app.data.source.remote.RemoteDataSource
-import com.abdl.mylmk_app.data.source.remote.services.RetrofitInstance
 import com.abdl.mylmk_app.databinding.FragmentHomeBinding
 import com.abdl.mylmk_app.ui.home.guru.GuruActivity
 import com.abdl.mylmk_app.ui.home.pendaftaran.DaftarActivity
 import com.abdl.mylmk_app.ui.home.program.ProgramActivity
-import com.abdl.mylmk_app.ui.home.program.ProgramViewModel
 import com.abdl.mylmk_app.ui.home.tentang.AboutUsActivity
-import com.abdl.mylmk_app.viewmodel.ViewModelFactory
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.startActivity
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-    private lateinit var programViewModel: ProgramViewModel
+//    private lateinit var programViewModel: ProgramViewModel
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -59,11 +54,11 @@ class HomeFragment : Fragment() {
             startActivity<AboutUsActivity>()
         }
 
-        val factory =
-            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(RetrofitInstance.api)))
-        programViewModel = ViewModelProvider(this, factory)[ProgramViewModel::class.java]
-
-        programViewModel.getAllProgram()
+//        val factory =
+//            ViewModelFactory(MainRepository.getInstance(RemoteDataSource(RetrofitInstance.api)))
+//        programViewModel = ViewModelProvider(this, factory)[ProgramViewModel::class.java]
+//
+//        programViewModel.getAllProgram()
     }
 
     override fun onDestroyView() {

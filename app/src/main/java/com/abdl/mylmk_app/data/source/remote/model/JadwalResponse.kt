@@ -1,8 +1,10 @@
 package com.abdl.mylmk_app.data.source.remote.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class JadwalResponse(
 
@@ -14,6 +16,7 @@ data class JadwalResponse(
 )
 
 @Entity(tableName = "tbl_jadwal")
+@Parcelize
 data class JadwalUserItem(
 
 	@field:SerializedName("hari")
@@ -35,8 +38,17 @@ data class JadwalUserItem(
 	val namaGuru: String,
 
 	@field:SerializedName("id_murid")
-	val idMurid: String
-)
+	val idMurid: String,
+
+	@field:SerializedName("id_guru")
+	val idGuru: String,
+
+	@field:SerializedName("alamat_guru")
+	val alamatGuru: String,
+
+	@field:SerializedName("avatar_guru")
+	val avatarGuru: String
+) : Parcelable
 
 @Entity(tableName = "tbl_jadwal_guru")
 data class JadwalGuruItem(

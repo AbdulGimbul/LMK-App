@@ -77,7 +77,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), UploadRequestBody.U
         with(binding) {
             tvName.text = user?.nama
             tvAddress.text = user?.alamat
-            tvUsername.text = user?.username
+            tvUsername.text = "@${user?.username}"
             tvPhoneNumber.text = user?.nohp.toString()
             tvGender.text = user?.jk
             Glide.with(requireContext())

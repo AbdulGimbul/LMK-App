@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdl.mylmk_app.databinding.ActivityMyGuruBinding
 import com.abdl.mylmk_app.ui.ngaji.jadwal.JadwalViewModel
 import com.abdl.mylmk_app.ui.profile.ProfileViewModel
+import com.abdl.mylmk_app.vo.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,6 +40,9 @@ class MyGuruActivity : AppCompatActivity() {
                 Log.d("MyGuruActivity", "cek $idUser")
                 viewModel.getJadwal(idUser).observe(this@MyGuruActivity, Observer { result ->
                     myGuruAdapter.setJadwalList(result.data)
+
+                    activityMyGuruBinding.progressBar.isVisible =
+                        result is Resource.Loading && result.data.isNullOrEmpty()
                 })
             })
         }

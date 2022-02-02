@@ -31,9 +31,24 @@ class DaftarActivity : AppCompatActivity() {
         activityDaftarBinding = ActivityDaftarBinding.inflate(layoutInflater)
         setContentView(activityDaftarBinding.root)
 
+        activityDaftarBinding.webView
+        activityDaftarBinding.webView.settings.setSupportMultipleWindows(true)
+
+        activityDaftarBinding.webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
+                return false
+            }
+        }
         //WebClient allows you to handle
         //onPageFinished and override Url loading
         activityDaftarBinding.webView.webChromeClient = object : WebChromeClient() {
+            override fun onReceivedTitle(view: WebView?, title: String?) {
+                window.setTitle(title)
+            }
+
             override fun onJsAlert(
                 view: WebView?,
                 url: String?,
@@ -127,6 +142,7 @@ class DaftarActivity : AppCompatActivity() {
                     FILECHOOSER_RESULTCODE
                 )
             }
+
         }
 
         var idUser: Int

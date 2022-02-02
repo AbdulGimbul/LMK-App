@@ -29,6 +29,22 @@ class LmkRepository @Inject constructor(
         }
     )
 
+    fun getProgram() = networkBoundResource(
+        query = {
+            lmkDao.getAllProgram()
+        },
+        fetch = {
+            delay(2000)
+            api.getAllProgram().program
+        },
+        saveFetchResult = { program ->
+            db.withTransaction {
+                lmkDao.deleteAllProgram()
+                lmkDao.insertProgram(program)
+            }
+        }
+    )
+
     fun getJadwal(idUser: Int) = networkBoundResource(
         query = {
             lmkDao.getJadwal()
