@@ -91,7 +91,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="16dp"
                     android:contentDescription="Instagram"
-                    android:src="@drawable/ig" />
+                    android:src="@drawable/instagram" />
 
                 <TextView
                     style="@style/TextSpec.Value"
