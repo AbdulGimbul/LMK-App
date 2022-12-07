@@ -12,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.abdl.mylmk_app.AlarmReceiver
 import com.abdl.mylmk_app.databinding.ActivityDaftarBinding
 import com.abdl.mylmk_app.ui.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,8 @@ class DaftarActivity : AppCompatActivity() {
     private val FILECHOOSER_RESULTCODE = 1
     val REQUEST_SELECT_FILE = 100
     private var mUploadMessage: ValueCallback<Uri>? = null
+
+    private lateinit var alarmReceiver: AlarmReceiver
 
     private lateinit var activityDaftarBinding: ActivityDaftarBinding
     private val profileViewModel: ProfileViewModel by viewModels()
@@ -34,12 +37,22 @@ class DaftarActivity : AppCompatActivity() {
         activityDaftarBinding.webView
         activityDaftarBinding.webView.settings.setSupportMultipleWindows(true)
 
+        alarmReceiver = AlarmReceiver()
         activityDaftarBinding.webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
             ): Boolean {
                 return false
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                if ((url != null) && url.startsWith("https://abdl.alterdev.id/daftar/successlanding")) {
+                    alarmReceiver.setNotifAlarm(
+                        this@DaftarActivity,
+                        "Jika jadwal belajar masih kosong, silahkan hubungi kami ya!:)"
+                    )
+                }
             }
         }
         //WebClient allows you to handle
@@ -48,6 +61,7 @@ class DaftarActivity : AppCompatActivity() {
             override fun onReceivedTitle(view: WebView?, title: String?) {
                 window.setTitle(title)
             }
+
 
             override fun onJsAlert(
                 view: WebView?,
@@ -148,11 +162,11 @@ class DaftarActivity : AppCompatActivity() {
         var idUser: Int
 
         //this will load the url of the website
-        profileViewModel.user.observe(this, Observer {
+        profileViewModel.user.observe(this) {
             idUser = it.id_user!!.toInt()
             Log.d("DaftarActivity", "cek $idUser")
             activityDaftarBinding.webView.loadUrl("https://abdl.alterdev.id/daftar/index/$idUser")
-        })
+        }
 
         //this will enable the javascript settings
         activityDaftarBinding.webView.settings.javaScriptEnabled = true
@@ -182,7 +196,7 @@ class DaftarActivity : AppCompatActivity() {
             }
         } else if (requestCode == FILECHOOSER_RESULTCODE) {
             if (mUploadMessage != null) {
-                var result = data?.data
+                val result = data?.data
                 mUploadMessage?.onReceiveValue(result)
                 mUploadMessage = null
             }

@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLMKApp"
         android:usesCleartextTraffic="true">
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".ui.AboutActivity"
             android:exported="false"
@@ -63,7 +68,9 @@
             android:name=".register.RegisterActivity"
             android:parentActivityName=".ui.auth.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.auth.LoginActivity">
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -17,7 +17,8 @@ import org.jetbrains.anko.support.v4.startActivity
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-//    private lateinit var programViewModel: ProgramViewModel
+
+    //    private lateinit var programViewModel: ProgramViewModel
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and

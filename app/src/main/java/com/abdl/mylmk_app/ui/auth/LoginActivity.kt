@@ -34,17 +34,17 @@ class LoginActivity : AppCompatActivity() {
         edtUsername = findViewById(R.id.username)
         edtPassword = findViewById(R.id.pass)
 
-        viewModel.getLoggedInUser().observe(this, Observer { user ->
+        viewModel.getLoggedInUser().observe(this) { user ->
             if (user != null) {
                 Intent(this, MainActivity::class.java).also {
                     it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(it)
                 }
             }
-        })
+        }
 
         binding.lupaPassword.setOnClickListener {
-            Snackbar.make(binding.container, "Silahkan menghubungi admin!", Snackbar.LENGTH_LONG)
+            Snackbar.make(binding.root, "Silahkan menghubungi admin!", Snackbar.LENGTH_LONG)
                 .also { snackbar ->
                     snackbar.setAction("Ok") {
                         snackbar.dismiss()

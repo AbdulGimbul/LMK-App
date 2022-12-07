@@ -59,9 +59,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="8dp"
+                android:justificationMode="inter_word"
                 android:text="@string/program_description"
                 android:textColor="@color/black"
-                android:justificationMode="inter_word"
                 android:textSize="16sp" />
         </RelativeLayout>
 
